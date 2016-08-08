@@ -1,0 +1,178 @@
+body {
+    background: url(../images/quotation.svg) no-repeat;
+    background-size: cover;
+    height: 141vw;
+    font-family: 'OpenSans';
+    margin: 0;
+    padding: 0;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 0.3vmin;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    display: inline-block;
+    color: #3e3c41;
+    border: 2px #3e3c41 solid;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #3e3c41;
+    color: #e8e3d4;
+}
+.selected-btn {
+    background-color: #3e3c41;
+    color: #e8e3d4;
+}
+
+.invoice-btn, .quotation-btn {
+    top: 0;
+    margin: 0;
+    width: 20vw;
+    height: 3vw;
+    font-size: 2.5vw;
+}
+.invoice-btn {
+    border-radius: 0 0 5px 0;
+}
+.quotation-btn {
+    border-radius: 0 0 0 5px;
+}
+
+.invoice-select {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: -0.5vw;
+    margin-top: 0;
+    padding: 0;
+    width: 43vw;
+    height: 3vw;
+    background-color: white;
+}
+
+input, textarea, span {
+    position: absolute;
+    font-family: 'OpenSans';
+    font-size: 1.8vw;
+}
+input, textarea {
+    border-color: rgb(159, 155, 155);
+    border-style: solid;
+    border-width: thin;
+    background-color: transparent;
+}
+
+.name {
+    top: 28vw;
+    left: 8vw;
+    height: 4vw;
+    width: 60vw;
+    font-weight: 700;
+}
+.adress {
+    top: 32vw;
+    left: 8vw;
+    height: 14vw;
+    width: 60vw;
+}
+.number {
+    top: 35.5vw;
+    left: 82vw;
+    height: 3vw;
+    width: 10vw;
+}
+.date {
+    top: 38.5vw;
+    left: 82vw;
+    height: 3vw;
+    width: 10vw;
+}
+.top-price {
+    top: 45.9vw;
+    left: 81vw;
+    height: 2.5vw;
+    width: 10vw;
+}
+.subtotal {
+    top: 87.2vw;
+    left: 84vw;
+    height: 3.5vw;
+    width: 13vw;
+}
+.advance {
+    top: 91.5vw;
+    left: 68.9vw;
+    height: 3.5vw;
+    width: 14vw;
+}
+.advance-price {
+    top: 91.5vw;
+    left: 84vw;
+    height: 3.5vw;
+    width: 13vw;
+}
+.price {
+    top: 95.8vw;
+    left: 84vw;
+    height: 3.5vw;
+    width: 13vw;
+}
+.top-price, .subtotal, .advance-price, .price {
+    text-align: right;
+    padding-right: 2vw;
+}
+.price, .top-price {
+    color: white;
+    font-weight: 700;
+}
+
+.description {
+    left: 7.5vw;
+    height: 3.5vw;
+    width: 45.2vw;
+    padding-left: 1vw;
+}
+.quantity, .unit-price, .total-price {
+    text-align: right;
+    padding-right: 2vw;
+}
+.quantity {
+    left: 53.8vw;
+    height: 3.5vw;
+    width: 14vw;
+}
+.unit-price {
+    left: 68.9vw;
+    height: 3.5vw;
+    width: 14vw;
+}
+.total-price {
+    left: 84vw;
+    height: 3.5vw;
+    width: 13vw;
+}
+.line1 { top: 57.2vw; }
+.line2 { top: 61.4vw; }
+.line3 { top: 65.7vw; }
+.line4 { top: 70vw; }
+.line5 { top: 74.3vw; }
+.line6 { top: 78.6vw; }
+.line7 { top: 82.8vw; }
+
+@font-face {
+    font-family: 'OpenSans';
+    font-style: normal;;
+    font-weight: 500;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../fonts/OpenSans-Bold.ttf);
+}

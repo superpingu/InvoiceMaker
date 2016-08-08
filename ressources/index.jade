@@ -1,0 +1,57 @@
+//output:index.html, pretty:true
+
+html(lang="fr")
+    head
+        meta(charset="UTF-8")
+        title Devis et Factures
+        link(rel='stylesheet', href='styles/style.css')
+    body
+        div.invoice-select
+            a.btn.selected-btn.quotation-btn Devis
+            a.btn.invoice-btn Facture
+        input.name(placeholder="Nom du client")
+        textarea.adress(placeholder="Adresse du client")
+        input.number
+        input.date
+        span.top-price
+        
+        input.description.line1
+        input.quantity.line1
+        input.unit-price.line1
+        input.total-price.line1
+        
+        input.description.line2
+        input.quantity.line2
+        input.unit-price.line2
+        input.total-price.line2
+        
+        input.description.line3
+        input.quantity.line3
+        input.unit-price.line3
+        input.total-price.line3
+        
+        input.description.line4
+        input.quantity.line4
+        input.unit-price.line4
+        input.total-price.line4
+        
+        input.description.line5
+        input.quantity.line5
+        input.unit-price.line5
+        input.total-price.line5
+        
+        input.description.line6
+        input.quantity.line6
+        input.unit-price.line6
+        input.total-price.line6
+        
+        input.description.line7
+        input.quantity.line7
+        input.unit-price.line7
+        input.total-price.line7
+        
+        input.subtotal
+        input.advance(value="Acompte (30%)")
+        input.advance-price
+        input.price
+        script(src="../lib/ui.js")
