@@ -1,4 +1,6 @@
-{Menu, ipcMain} = require 'electron'
+{Menu, ipcMain, dialog} = require 'electron'
+os = require 'os'
+path = require 'path'
 
 template = [
   {
@@ -14,19 +16,25 @@ template = [
         label: "Ouvrir",
         accelerator: 'CmdOrCtrl+O',
         click: (item, focusedWindow) ->
-
+            options =
+                filters: [ {name: 'PDF', extensions: ['pdf']} ]
+                properties: ['openFile']
+                defaultPath: path.join os.homedir(), 'Factures/'
+                buttonLabel: 'Ouvrir'
+            dialog.showOpenDialog focusedWindow, options, (filepath) ->
+                focusedWindow.webContents.send 'open', filepath if filepath?
       },
       {
         label: 'Enregistrer',
         accelerator: 'CmdOrCtrl+S',
         click: (item, focusedWindow) ->
-            focusedWindow.webContents.send 'save'
+            focusedWindow.webContents.send 'save' if focusedWindow
       },
       {
         label: "Imprimer",
         accelerator: 'CmdOrCtrl+P',
         click: (item, focusedWindow) ->
-            focusedWindow.webContents.send 'print'
+            focusedWindow.webContents.send 'print' if focusedWindow
       }
     ]
   },

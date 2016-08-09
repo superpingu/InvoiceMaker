@@ -12,12 +12,24 @@ reloading = false
 modified = false
 saveCallback = null
 
+now = new Date()
+month = now.getMonth() + 1
+day = now.getDate()
+month = '0' + month if month < 10
+day = '0' + day if day < 10
+
 getNumber = (year) ->
     counters = jsonfile.readFileSync __dirname+'/counters.json'
     number = counters[year]?[selectedType] ? 1
     number = '0' + number if number < 10
     return number
 
+changeType = (btn, type) ->
+    $('.bg').attr 'src', "images/#{type}.svg"
+    $('.selected-btn').removeClass 'selected-btn'
+    $(btn).addClass 'selected-btn'
+    selectedType = type
+    $('.number').val '' + now.getFullYear() + month + getNumber(now.getFullYear())
 
 getContent = ->
     content = {}
@@ -27,6 +39,13 @@ getContent = ->
     content.adress = $('.adress').val()
     content.type = selectedType
     return content
+setContent = (content) ->
+    changeType ".#{content.type}-btn", content.type
+    delete content.type
+
+    for field, value of content
+        $('.'+field.split('_').join('.')).val(value)
+    $('.price').keyup()
 
 showControls = (show) ->
     $('input').blur().css 'border-color', if show then 'rgb(159, 155, 155)' else 'transparent'
@@ -34,13 +53,19 @@ showControls = (show) ->
     $('.invoice-select').show() if show
     $('.invoice-select').hide() if not show
 
+open = (filepath) ->
+    pdfDir = filepath.split '/'
+    pdfName = pdfDir.pop().split('.')[0]
+    content = jsonfile.readFileSync '/' + pdfDir.join('/') + '/.' + pdfName + '.json'
+    setContent content
+    modified = false
 
 save = (callback) ->
     showControls no
 
     content = getContent()
     year = content.date.split('.')[2]
-    pdfPath = path.join os.homedir(), "factures/#{year}/"
+    pdfPath = path.join os.homedir(), "Factures/#{year}/"
     pdfName = (if selectedType is 'invoice' then 'Facture-' else 'Devis-') + content.number
     shell.mkdir '-p', pdfPath
 
@@ -79,24 +104,12 @@ ipc.on 'closing', ->
     askToSave -> app.exit(0)
 ipc.on 'save', -> save()
 ipc.on 'print', -> print()
+ipc.on 'open', (event, filepath) -> open filepath[0]
 ipc.on 'pdf-saved', ->
     saveCallback?()
     showControls yes
 
 $ ->
-    now = new Date()
-    month = now.getMonth() + 1
-    day = now.getDate()
-    month = '0' + month if month < 10
-    day = '0' + day if day < 10
-
-    changeType = (btn, type) ->
-        $('.bg').attr 'src', "images/#{type}.svg"
-        $('.selected-btn').removeClass 'selected-btn'
-        $(btn).addClass 'selected-btn'
-        selectedType = type
-        $('.number').val '' + now.getFullYear() + month + getNumber(now.getFullYear())
-
     $('.invoice-btn').click -> changeType this, 'invoice'
     $('.quotation-btn').click -> changeType this, 'quotation'
 

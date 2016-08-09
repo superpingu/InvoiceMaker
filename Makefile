@@ -14,6 +14,7 @@ run: all
 	electron .
 
 dist:
+	rm -rf dist/
 	electron-packager ./ --platform=darwin,linux --arch=x64 --out=./dist/
 
 .PHONY: all watch clean test run dist
