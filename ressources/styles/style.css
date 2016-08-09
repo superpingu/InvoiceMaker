@@ -1,12 +1,16 @@
 body {
-    background: url(../images/quotation.svg) no-repeat;
     background-size: cover;
     height: 141vw;
     font-family: 'OpenSans';
     margin: 0;
     padding: 0;
 }
-
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
 .btn {
     border-radius: 5px;
     padding: 0.3vmin;

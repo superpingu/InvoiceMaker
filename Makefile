@@ -13,4 +13,7 @@ test:
 run: all
 	electron .
 
-.PHONY: all watch clean test run
+dist:
+	electron-packager ./ --platform=darwin,linux --arch=x64 --out=./dist/
+
+.PHONY: all watch clean test run dist
